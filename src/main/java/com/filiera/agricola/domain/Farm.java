@@ -10,9 +10,10 @@ public class Farm extends BusinessEntity {
             String VATNumber,
             String address,
             String email,
-            String phoneNumber
+            String phoneNumber,
+            DefaultCoordinates coordinates
     ){
-        super(companyName,VATNumber,address,email,phoneNumber);
+        super(companyName,VATNumber,address,email,phoneNumber, coordinates);
         registrationDate = LocalDateTime.now();
         authorizedUserIds = new ArrayList<UUID>();
     }

@@ -1,6 +1,7 @@
 package com.filiera.agricola;
 
 import com.filiera.agricola.domain.BusinessEntity;
+import com.filiera.agricola.domain.DefaultCoordinates;
 import com.filiera.agricola.domain.Farm;
 
 public class Main {
@@ -10,13 +11,15 @@ public class Main {
         System.out.println("Start program!");
 
         BusinessEntity farm1 = new Farm(
-            "Azienda Agricola Rossi",
-            "IT12345678901",
-            "Via dei Campi 123, Milano",
-            "info@farmrossi.it",
-            "+39 02 1234567"
+                "Azienda Agricola Rossi",
+                "IT12345678901",
+                "Via dei Campi 123, Milano",
+                "info@farmrossi.it",
+                "+39 02 1234567",
+                new DefaultCoordinates(45.4642f, 9.1900f)
         );
 
         System.out.println("Farm1: " + farm1.getAddress());
+        System.out.println("Cordinate: " + farm1.getCoordinates());
     }
 }

@@ -1,4 +1,5 @@
 package com.filiera.agricola.domain;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,8 @@ public abstract class BusinessEntity {
     protected String phoneNumber;
     protected LocalDateTime registrationDate;
     protected List<UUID> authorizedUserIds;
+    protected DefaultCoordinates coordinates;
+
 
     private static final String EMAIL_REGEX =
             "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
@@ -23,7 +26,8 @@ public abstract class BusinessEntity {
             String VATNumber,
             String address,
             String email,
-            String phoneNumber
+            String phoneNumber,
+            DefaultCoordinates coordinates
     ) {
         this.id = UUID.randomUUID().toString();
         this.companyName = Objects.requireNonNull(companyName,"Company name cannot be null");
@@ -31,6 +35,7 @@ public abstract class BusinessEntity {
         this.address = Objects.requireNonNull(address, "Address cannot be null");
         this.email = validateEmail(email);
         this.phoneNumber = Objects.requireNonNull(phoneNumber,   "Phone number cannot be null");
+        this.coordinates = Objects.requireNonNull(coordinates, "Coordinates cannot be null");
     }
 
     public String getId() {return id;}
@@ -41,6 +46,9 @@ public abstract class BusinessEntity {
     public String getPhoneNumber() {return phoneNumber;}
     public LocalDateTime getRegistrationDate() {return registrationDate;}
     public List<UUID> getAuthorizedUserIds() {return authorizedUserIds;}
+    public String getCoordinates() {
+        return "{lat: " + coordinates.getLat() + ", lng: " + coordinates.getLng() + "}";
+    }
 
     void setEmail (String email) {
         this.email = email;
