@@ -10,7 +10,7 @@ public interface Coordinates {
      *
      * @return the latitude
      */
-    public Float getLat();
+    Float getLat();
 
 
     /**
@@ -18,7 +18,7 @@ public interface Coordinates {
      *
      * @return the longitude
      */
-    public Float getLng();
+    Float getLng();
 
 
     /**
@@ -26,7 +26,7 @@ public interface Coordinates {
      *
      * @param lat as a float number
      */
-    public void setLat(Float lat);
+    void setLat(Float lat);
 
 
     /**
@@ -34,6 +34,5 @@ public interface Coordinates {
      *
      * @param lng as a float number
      */
-    public void setLng(Float lng);
-
+    void setLng(Float lng);
 }
