@@ -9,6 +9,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+import static com.filiera.agricola.utils.ValidationUtils.validateEmail;
+
 public class Utente {
     private final UUID id;
     private String nome;
@@ -19,9 +21,6 @@ public class Utente {
     private String passwordHash;
 
     private Set<RuoloPiattaforma> ruoli;
-
-    private static final String EMAIL_REGEX =
-            "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
 
     public Utente(
             String nome,
@@ -110,23 +109,5 @@ public class Utente {
          }
 
         this.ruoli.add(ruolo);
-    }
-
-    private String validateEmail(String email) {
-        Objects.requireNonNull(email, "Email non può essere null");
-        String trimmed = email.trim();
-
-        if (trimmed.isEmpty()) {
-            throw new IllegalArgumentException("Email non può essere vuota");
-        }
-        if (!trimmed.contains("@")) {
-            throw new IllegalArgumentException("Il formato dell'email non è valido");
-        }
-
-        if (!EMAIL_REGEX.matches(trimmed)) {
-            throw new IllegalArgumentException("Il formato dell'email non è valido");
-        }
-
-        return trimmed;
     }
 }
