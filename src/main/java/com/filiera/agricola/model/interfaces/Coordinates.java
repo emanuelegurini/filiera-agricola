@@ -1,4 +1,4 @@
-package com.filiera.agricola.interfaces;
+package com.filiera.agricola.model.interfaces;
 
 /**
  * This interface is used to model the Coordinates Object

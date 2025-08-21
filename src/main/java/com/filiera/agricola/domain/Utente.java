@@ -1,6 +1,6 @@
 package com.filiera.agricola.domain;
 
-import com.filiera.agricola.enums.RuoloPiattaforma;
+import com.filiera.agricola.model.enums.RuoloPiattaforma;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.HashSet;

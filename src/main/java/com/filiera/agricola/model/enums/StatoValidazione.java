@@ -1,4 +1,4 @@
-package com.filiera.agricola.enums;
+package com.filiera.agricola.model.enums;
 
 public enum StatoValidazione {
     IN_ATTESA_DI_APPROVAZIONE, // Appena creato, in attesa di revisione

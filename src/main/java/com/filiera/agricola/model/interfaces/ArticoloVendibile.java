@@ -1,4 +1,4 @@
-package com.filiera.agricola.interfaces;
+package com.filiera.agricola.model.interfaces;
 
 /**
  * Definisce il contratto per qualsiasi oggetto che possa essere venduto

@@ -1,6 +1,6 @@
-package com.filiera.agricola.interfaces;
+package com.filiera.agricola.model.interfaces;
 
-import com.filiera.agricola.enums.StatoValidazione;
+import com.filiera.agricola.model.enums.StatoValidazione;
 
 import java.util.Map;
 

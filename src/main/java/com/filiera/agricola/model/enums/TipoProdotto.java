@@ -1,4 +1,4 @@
-package com.filiera.agricola.enums;
+package com.filiera.agricola.model.enums;
 
 /**
  * Distingue tra una materia prima e un prodotto risultato di una trasformazione.

@@ -1,6 +1,6 @@
 package com.filiera.agricola.domain;
 
-import com.filiera.agricola.enums.TipoAzienda;
+import com.filiera.agricola.model.enums.TipoAzienda;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

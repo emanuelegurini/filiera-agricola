@@ -1,4 +1,4 @@
-package com.filiera.agricola.enums;
+package com.filiera.agricola.model.enums;
 
 /*
 * Questi sono i ruoli che un utente registrato può avere all'interno della piattaforma.

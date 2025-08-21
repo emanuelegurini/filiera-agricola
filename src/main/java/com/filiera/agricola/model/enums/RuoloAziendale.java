@@ -1,4 +1,4 @@
-package com.filiera.agricola.enums;
+package com.filiera.agricola.model.enums;
 
 /**
  * Definisce i ruoli specifici che un Utente può avere

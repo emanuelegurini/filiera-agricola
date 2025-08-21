@@ -1,4 +1,4 @@
-package com.filiera.agricola.enums;
+package com.filiera.agricola.model.enums;
 
 /*
 * Definisce le categoria merceologiche dei prodotti

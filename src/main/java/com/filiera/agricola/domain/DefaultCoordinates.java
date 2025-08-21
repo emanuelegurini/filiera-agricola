@@ -1,6 +1,6 @@
 package com.filiera.agricola.domain;
 
-import com.filiera.agricola.interfaces.Coordinates;
+import com.filiera.agricola.model.interfaces.Coordinates;
 
 import java.util.Objects;
 
