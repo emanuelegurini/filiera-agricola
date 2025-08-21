@@ -22,6 +22,8 @@ public class Utente {
 
     private Set<RuoloPiattaforma> ruoli;
 
+    private final Set<Affiliazione> affiliazioni;
+
     public Utente(
             String nome,
             String cognome,
@@ -40,6 +42,8 @@ public class Utente {
 
         this.ruoli = new HashSet<>();
         this.ruoli.add(RuoloPiattaforma.ACQUIRENTE);
+
+        this.affiliazioni = new HashSet<>();
     }
 
     public UUID getId() {
@@ -109,5 +113,35 @@ public class Utente {
          }
 
         this.ruoli.add(ruolo);
+    }
+
+    /**
+     * Aggiunge una nuova affiliazione all'utente.
+     * Grazie a equals/hashCode, impedisce di aggiungere una seconda affiliazione
+     * per la stessa azienda.
+     * @param affiliazione L'affiliazione da aggiungere.
+     */
+    public void addAffiliazione(Affiliazione affiliazione) {
+        // Controlla che l'affiliazione riguardi questo specifico utente
+        if (!affiliazione.getUtente().equals(this)) {
+            throw new IllegalArgumentException("L'affiliazione non appartiene a questo utente.");
+        }
+        this.affiliazioni.add(affiliazione);
+    }
+
+    /**
+     * Rimuove un'affiliazione (es. l'utente non lavora più per quell'azienda).
+     * @param affiliazione L'affiliazione da rimuovere.
+     */
+    public void removeAffiliazione(Affiliazione affiliazione) {
+        this.affiliazioni.remove(affiliazione);
+    }
+
+    /**
+     * Restituisce una vista non modificabile delle affiliazioni dell'utente.
+     * @return Un Set non modificabile di Affiliazione.
+     */
+    public Set<Affiliazione> getAffiliazioni() {
+        return Collections.unmodifiableSet(this.affiliazioni);
     }
 }
