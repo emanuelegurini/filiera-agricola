@@ -35,16 +35,16 @@ public class DefaultProdottoService implements ProdottoService {
             UUID idAzienda,
             CreazioneProdottoDTO dati
     ) {
+        if (dati.tipoProdotto() == TipoProdotto.MATERIA_PRIMA && dati.ingredientiIds() != null && !dati.ingredientiIds().isEmpty()) {
+            throw new IllegalArgumentException("Una materia prima non può avere ingredienti.");
+        }
+
         DefaultUtente utente = utenteRepository.findById(idUtente)
                 .orElseThrow(() -> new RuntimeException("Utente non trovato"));
         DefaultAzienda azienda = aziendaRepository.findById(idAzienda)
                 .orElseThrow(() -> new RuntimeException("Azienda non trovata"));
 
         verificaPermessoCreazione(utente, azienda);
-
-        if (dati.tipoProdotto() == TipoProdotto.MATERIA_PRIMA && dati.ingredientiIds() != null && !dati.ingredientiIds().isEmpty()) {
-            throw new IllegalArgumentException("Una materia prima non può avere ingredienti.");
-        }
 
         DefaultProdotto nuovoProdotto = new DefaultProdotto(
                 dati.nome(),
