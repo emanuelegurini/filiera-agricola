@@ -4,6 +4,7 @@ import com.filiera.agricola.domain.DefaultProdotto;
 import com.filiera.agricola.model.interfaces.ProdottoRepository;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /*
 * Questa classe implementa il DB in memory.
@@ -24,10 +25,10 @@ public class DefaultProdottoRepository implements ProdottoRepository {
     * Prodotto prod1 = new Prodotto()
     * prod1.getId()
     */
-    private final Map<UUID, DefaultProdotto> database = new HashMap<>();
+    private final Map<UUID, DefaultProdotto> database = new ConcurrentHashMap<>();
 
     @Override
-    public void Save(DefaultProdotto defaultProdotto) {
+    public void save(DefaultProdotto defaultProdotto) {
         System.out.println("INFO: Salvataggio del prodotto '" + defaultProdotto.getNome() + "' in memoria.");
         database.put(defaultProdotto.getId(), defaultProdotto);
     }
