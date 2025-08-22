@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ProdottoRepository {
-    void Save(DefaultProdotto defaultProdotto);
+    void save(DefaultProdotto defaultProdotto);
 
     Optional<DefaultProdotto> findById(UUID id);
 
