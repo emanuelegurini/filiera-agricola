@@ -10,13 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DefaultProdottoTest {
 
-    private DefaultAzienda azienda;
     private DefaultProdotto materiaPrima; // Pomodoro
     private DefaultProdotto prodottoTrasformato; // Passata di pomodoro
 
     @BeforeEach
     void setUp() {
-        azienda = new DefaultAzienda("Azienda Agricola Sole", "98765432109", "Via del Sole 1", "info@sole.it", "071987654", "www.sole.it", new DefaultCoordinate(43.1f, 13.1f));
+        DefaultAzienda azienda = new DefaultAzienda("Azienda Agricola Sole", "98765432109", "Via del Sole 1", "info@sole.it", "071987654", "www.sole.it", new DefaultCoordinate(43.1f, 13.1f));
 
         materiaPrima = new DefaultProdotto(
                 "Pomodoro San Marzano",

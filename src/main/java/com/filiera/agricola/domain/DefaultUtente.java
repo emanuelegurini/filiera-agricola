@@ -20,7 +20,7 @@ public class DefaultUtente {
     private String phoneNumber;
     private String passwordHash;
 
-    private Set<RuoloPiattaforma> ruoli;
+    private final Set<RuoloPiattaforma> ruoli;
 
     private final Set<DefaultAffiliazione> affiliazioni;
 
