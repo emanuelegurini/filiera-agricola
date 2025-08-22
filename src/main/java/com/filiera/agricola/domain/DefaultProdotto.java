@@ -7,7 +7,7 @@ import com.filiera.agricola.model.interfaces.Validabile;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Prodotto implements ArticoloVendibile, Validabile {
+public class DefaultProdotto implements ArticoloVendibile, Validabile {
 
     private final UUID id;
     private String nome;
@@ -18,8 +18,8 @@ public class Prodotto implements ArticoloVendibile, Validabile {
     private CategoriaProdotto categoriaProdotto;
     private List<String> certificazioni;
 
-    private final Azienda aziendaProduttrice;
-    private final List<Prodotto> ingredienti;
+    private final DefaultAzienda defaultAziendaProduttrice;
+    private final List<DefaultProdotto> ingredienti;
 
     private StatoValidazione stato;
 
@@ -29,12 +29,12 @@ public class Prodotto implements ArticoloVendibile, Validabile {
 
     private String metodoTrasformazione;
 
-    public Prodotto(
+    public DefaultProdotto(
             String nome,
             String descrizione,
             double prezzoUnitario,
             UnitaDiMisura unitaDiMisura,
-            Azienda aziendaProduttrice,
+            DefaultAzienda defaultAziendaProduttrice,
             TipoProdotto tipoProdotto,
             CategoriaProdotto categoriaProdotto
     ) {
@@ -43,7 +43,7 @@ public class Prodotto implements ArticoloVendibile, Validabile {
         this.descrizione = descrizione;
         this.prezzoUnitario = prezzoUnitario;
         this.unitaDiMisura = unitaDiMisura;
-        this.aziendaProduttrice = Objects.requireNonNull(aziendaProduttrice, "L'azienda produttrice non può essere nulla");
+        this.defaultAziendaProduttrice = Objects.requireNonNull(defaultAziendaProduttrice, "L'azienda produttrice non può essere nulla");
         this.tipoProdotto = Objects.requireNonNull(tipoProdotto, "Il tipo di prodotto non può essere nullo");
 
         this.ingredienti = new ArrayList<>();
@@ -74,7 +74,7 @@ public class Prodotto implements ArticoloVendibile, Validabile {
 
         dati.put("ID Prodotto", this.id.toString());
         dati.put("Nome Prodotto", this.nome);
-        dati.put("Azienda", this.aziendaProduttrice.getRagioneSociale());
+        dati.put("Azienda", this.defaultAziendaProduttrice.getRagioneSociale());
         dati.put("Categoria", this.categoriaProdotto.toString());
         dati.put("Tipo Prodotto", this.tipoProdotto.toString());
 
@@ -86,7 +86,7 @@ public class Prodotto implements ArticoloVendibile, Validabile {
             String listaIngredienti = this.ingredienti.isEmpty()
                     ? "Nessuno specificato"
                     : this.ingredienti.stream()
-                    .map(Prodotto::getNome)
+                    .map(DefaultProdotto::getNome)
                     .collect(Collectors.joining(", "));
             dati.put("Ingredienti", listaIngredienti);
         }
@@ -111,7 +111,7 @@ public class Prodotto implements ArticoloVendibile, Validabile {
      * Aggiunge un ingrediente a questo prodotto, utile per i prodotti trasformati.
      * @param ingrediente Il prodotto da aggiungere come ingrediente.
      */
-    public void aggiungiIngrediente(Prodotto ingrediente) {
+    public void aggiungiIngrediente(DefaultProdotto ingrediente) {
         if (this.tipoProdotto == TipoProdotto.MATERIA_PRIMA) {
             throw new IllegalStateException("Non è possibile aggiungere ingredienti a una materia prima.");
         }
@@ -180,11 +180,11 @@ public class Prodotto implements ArticoloVendibile, Validabile {
         this.certificazioni = (certificazioni == null) ? new ArrayList<>() : new ArrayList<>(certificazioni);
     }
 
-    public Azienda getAziendaProduttrice() {
-        return this.aziendaProduttrice;
+    public DefaultAzienda getAziendaProduttrice() {
+        return this.defaultAziendaProduttrice;
     }
 
-    public List<Prodotto> getIngredienti() {
+    public List<DefaultProdotto> getIngredienti() {
         // Restituisce una vista non modificabile della lista originale.
         // È la soluzione più efficiente.
         return Collections.unmodifiableList(this.ingredienti);

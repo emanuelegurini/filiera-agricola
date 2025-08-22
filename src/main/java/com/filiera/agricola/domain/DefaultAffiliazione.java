@@ -6,21 +6,21 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Affiliazione {
+public class DefaultAffiliazione {
     private final UUID id;
-    private final Utente utente;
-    private final Azienda azienda;
+    private final DefaultUtente defaultUtente;
+    private final DefaultAzienda defaultAzienda;
     private RuoloAziendale ruoloAziendale;
     private final LocalDateTime dataAffiliazione;
 
-    public Affiliazione(
-            Utente utente,
-            Azienda azienda,
+    public DefaultAffiliazione(
+            DefaultUtente defaultUtente,
+            DefaultAzienda defaultAzienda,
             RuoloAziendale ruoloAziendale
     ) {
         this.id = UUID.randomUUID();
-        this.utente = Objects.requireNonNull(utente, "L'utente non può essere nullo.");
-        this.azienda = Objects.requireNonNull(azienda, "L'azienda non può essere nulla.");
+        this.defaultUtente = Objects.requireNonNull(defaultUtente, "L'utente non può essere nullo.");
+        this.defaultAzienda = Objects.requireNonNull(defaultAzienda, "L'azienda non può essere nulla.");
         this.ruoloAziendale = Objects.requireNonNull(ruoloAziendale, "Il ruolo aziendale non può essere nullo.");
         this.dataAffiliazione = LocalDateTime.now();
     }
@@ -29,12 +29,12 @@ public class Affiliazione {
         return id;
     }
 
-    public Utente getUtente() {
-        return utente;
+    public DefaultUtente getUtente() {
+        return defaultUtente;
     }
 
-    public Azienda getAzienda() {
-        return azienda;
+    public DefaultAzienda getAzienda() {
+        return defaultAzienda;
     }
 
     public RuoloAziendale getRuoloAziendale() {
@@ -52,12 +52,12 @@ public class Affiliazione {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Affiliazione that = (Affiliazione) o;
-        return Objects.equals(id, that.id) && Objects.equals(utente, that.utente) && Objects.equals(azienda, that.azienda) && ruoloAziendale == that.ruoloAziendale;
+        DefaultAffiliazione that = (DefaultAffiliazione) o;
+        return Objects.equals(id, that.id) && Objects.equals(defaultUtente, that.defaultUtente) && Objects.equals(defaultAzienda, that.defaultAzienda) && ruoloAziendale == that.ruoloAziendale;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, utente, azienda, ruoloAziendale);
+        return Objects.hash(id, defaultUtente, defaultAzienda, ruoloAziendale);
     }
 }

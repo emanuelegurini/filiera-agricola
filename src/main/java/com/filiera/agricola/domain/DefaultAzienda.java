@@ -10,7 +10,7 @@ import java.util.UUID;
 
 import static com.filiera.agricola.utils.ValidationUtils.validateEmail;
 
-public class Azienda {
+public class DefaultAzienda {
     protected String id;
     protected String ragioneSociale;
     protected String partitaIva;
@@ -27,7 +27,7 @@ public class Azienda {
      */
     private final Set<TipoAzienda> tipiAzienda;
 
-    public Azienda(
+    public DefaultAzienda(
             String ragioneSociale,
             String partitaIva,
             String indirizzo,

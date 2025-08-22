@@ -1,15 +1,15 @@
 package com.filiera.agricola.model.interfaces;
 
-import com.filiera.agricola.domain.Prodotto;
+import com.filiera.agricola.domain.DefaultProdotto;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 public interface ProdottoRepository {
-    void Save(Prodotto prodotto);
+    void Save(DefaultProdotto defaultProdotto);
 
-    Optional<Prodotto> findById(UUID id);
+    Optional<DefaultProdotto> findById(UUID id);
 
-    List<Prodotto> findAll();
+    List<DefaultProdotto> findAll();
 }

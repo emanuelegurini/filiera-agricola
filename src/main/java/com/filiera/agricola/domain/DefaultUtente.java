@@ -11,7 +11,7 @@ import java.util.UUID;
 
 import static com.filiera.agricola.utils.ValidationUtils.validateEmail;
 
-public class Utente {
+public class DefaultUtente {
     private final UUID id;
     private String nome;
     private String cognome;
@@ -22,9 +22,9 @@ public class Utente {
 
     private Set<RuoloPiattaforma> ruoli;
 
-    private final Set<Affiliazione> affiliazioni;
+    private final Set<DefaultAffiliazione> affiliazioni;
 
-    public Utente(
+    public DefaultUtente(
             String nome,
             String cognome,
             String email,
@@ -119,29 +119,29 @@ public class Utente {
      * Aggiunge una nuova affiliazione all'utente.
      * Grazie a equals/hashCode, impedisce di aggiungere una seconda affiliazione
      * per la stessa azienda.
-     * @param affiliazione L'affiliazione da aggiungere.
+     * @param defaultAffiliazione L'affiliazione da aggiungere.
      */
-    public void addAffiliazione(Affiliazione affiliazione) {
+    public void addAffiliazione(DefaultAffiliazione defaultAffiliazione) {
         // Controlla che l'affiliazione riguardi questo specifico utente
-        if (!affiliazione.getUtente().equals(this)) {
+        if (!defaultAffiliazione.getUtente().equals(this)) {
             throw new IllegalArgumentException("L'affiliazione non appartiene a questo utente.");
         }
-        this.affiliazioni.add(affiliazione);
+        this.affiliazioni.add(defaultAffiliazione);
     }
 
     /**
      * Rimuove un'affiliazione (es. l'utente non lavora più per quell'azienda).
-     * @param affiliazione L'affiliazione da rimuovere.
+     * @param defaultAffiliazione L'affiliazione da rimuovere.
      */
-    public void removeAffiliazione(Affiliazione affiliazione) {
-        this.affiliazioni.remove(affiliazione);
+    public void removeAffiliazione(DefaultAffiliazione defaultAffiliazione) {
+        this.affiliazioni.remove(defaultAffiliazione);
     }
 
     /**
      * Restituisce una vista non modificabile delle affiliazioni dell'utente.
      * @return Un Set non modificabile di Affiliazione.
      */
-    public Set<Affiliazione> getAffiliazioni() {
+    public Set<DefaultAffiliazione> getAffiliazioni() {
         return Collections.unmodifiableSet(this.affiliazioni);
     }
 }

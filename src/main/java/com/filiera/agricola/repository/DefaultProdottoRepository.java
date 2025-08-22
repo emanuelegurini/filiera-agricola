@@ -1,6 +1,6 @@
 package com.filiera.agricola.repository;
 
-import com.filiera.agricola.domain.Prodotto;
+import com.filiera.agricola.domain.DefaultProdotto;
 import com.filiera.agricola.model.interfaces.ProdottoRepository;
 
 import java.util.*;
@@ -24,21 +24,21 @@ public class DefaultProdottoRepository implements ProdottoRepository {
     * Prodotto prod1 = new Prodotto()
     * prod1.getId()
     */
-    private final Map<UUID, Prodotto> database = new HashMap<>();
+    private final Map<UUID, DefaultProdotto> database = new HashMap<>();
 
     @Override
-    public void Save(Prodotto prodotto) {
-        System.out.println("INFO: Salvataggio del prodotto '" + prodotto.getNome() + "' in memoria.");
-        database.put(prodotto.getId(), prodotto);
+    public void Save(DefaultProdotto defaultProdotto) {
+        System.out.println("INFO: Salvataggio del prodotto '" + defaultProdotto.getNome() + "' in memoria.");
+        database.put(defaultProdotto.getId(), defaultProdotto);
     }
 
     @Override
-    public Optional<Prodotto> findById(UUID id) {
+    public Optional<DefaultProdotto> findById(UUID id) {
         return Optional.ofNullable(database.get(id));
     }
 
     @Override
-    public List<Prodotto> findAll() {
+    public List<DefaultProdotto> findAll() {
         return new ArrayList<>(database.values());
     }
 
