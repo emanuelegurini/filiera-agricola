@@ -53,11 +53,12 @@ public class DefaultAffiliazione {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         DefaultAffiliazione that = (DefaultAffiliazione) o;
-        return Objects.equals(id, that.id) && Objects.equals(defaultUtente, that.defaultUtente) && Objects.equals(defaultAzienda, that.defaultAzienda) && ruoloAziendale == that.ruoloAziendale;
+        return Objects.equals(defaultUtente, that.defaultUtente)
+                && Objects.equals(defaultAzienda, that.defaultAzienda);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, defaultUtente, defaultAzienda, ruoloAziendale);
+        return Objects.hash(defaultUtente, defaultAzienda);
     }
 }
