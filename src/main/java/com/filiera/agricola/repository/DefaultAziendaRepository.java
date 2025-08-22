@@ -22,4 +22,11 @@ public class DefaultAziendaRepository implements AziendaRepository {
     public Optional<DefaultAzienda> findById(UUID id) {
         return Optional.ofNullable(database.get(id));
     }
+
+    @Override
+    public Optional<DefaultAzienda> findByPartitaIva(String partitaIva) {
+        return database.values().stream()
+                .filter(azienda -> azienda.getPartitaIva().equalsIgnoreCase(partitaIva))
+                .findFirst();
+    }
 }
