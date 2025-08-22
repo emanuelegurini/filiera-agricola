@@ -107,12 +107,8 @@ public class DefaultUtente {
         return Collections.unmodifiableSet(this.ruoli);
     }
 
-     public void addRuolo(RuoloPiattaforma ruolo) {
-         if (this.ruoli.contains(ruolo)) {
-             throw new IllegalArgumentException("Il ruolo è già presente nel set.");
-         }
-
-        this.ruoli.add(ruolo);
+     public boolean addRuolo(RuoloPiattaforma ruolo) {
+        return this.ruoli.add(ruolo);
     }
 
     /**
