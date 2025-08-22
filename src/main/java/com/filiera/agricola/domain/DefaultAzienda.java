@@ -11,7 +11,7 @@ import java.util.UUID;
 import static com.filiera.agricola.utils.ValidationUtils.validateEmail;
 
 public class DefaultAzienda {
-    protected String id;
+    protected UUID id;
     protected String ragioneSociale;
     protected String partitaIva;
     protected String indirizzo;
@@ -36,7 +36,7 @@ public class DefaultAzienda {
             String sitoWeb,
             DefaultCoordinate coordinate
     ) {
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID();
         this.ragioneSociale = Objects.requireNonNull(ragioneSociale,"Company name cannot be null");
         this.partitaIva = Objects.requireNonNull(partitaIva, "VAT number cannot be null");
         this.indirizzo = Objects.requireNonNull(indirizzo, "Address cannot be null");
@@ -48,7 +48,7 @@ public class DefaultAzienda {
 
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
