@@ -3,7 +3,7 @@ package com.filiera.agricola.model.interfaces;
 /**
  * This interface is used to model the Coordinates Object
  */
-public interface Coordinates {
+public interface Coordinate {
 
     /**
      * This function is used to return the lat

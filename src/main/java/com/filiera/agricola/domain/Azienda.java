@@ -19,7 +19,7 @@ public class Azienda {
     protected String numeroTelefono;
     protected String sitoWeb;
     protected LocalDateTime registrationDate;
-    protected DefaultCoordinates coordinate;
+    protected DefaultCoordinate coordinate;
 
     /**
      * Insieme dei ruoli che l'azienda ricopre nella filiera.
@@ -34,7 +34,7 @@ public class Azienda {
             String email,
             String numeroTelefono,
             String sitoWeb,
-            DefaultCoordinates coordinate
+            DefaultCoordinate coordinate
     ) {
         this.id = UUID.randomUUID().toString();
         this.ragioneSociale = Objects.requireNonNull(ragioneSociale,"Company name cannot be null");
@@ -104,7 +104,7 @@ public class Azienda {
         return "{lat: " + coordinate.getLat() + ", lng: " + coordinate.getLng() + "}";
     }
 
-    public void setCoordinate(DefaultCoordinates coordinate) {
+    public void setCoordinate(DefaultCoordinate coordinate) {
         this.coordinate = coordinate;
     }
 

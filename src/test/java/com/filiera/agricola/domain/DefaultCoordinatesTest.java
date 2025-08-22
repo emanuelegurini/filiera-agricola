@@ -20,7 +20,7 @@ class DefaultCoordinatesTest {
             Float longitude = 12.0f;
 
             // When
-            DefaultCoordinates coordinates = new DefaultCoordinates(latitude, longitude);
+            DefaultCoordinate coordinates = new DefaultCoordinate(latitude, longitude);
 
             // Then
             assertNotNull(coordinates);

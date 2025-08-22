@@ -1,15 +1,15 @@
 package com.filiera.agricola.domain;
 
-import com.filiera.agricola.model.interfaces.Coordinates;
+import com.filiera.agricola.model.interfaces.Coordinate;
 
 import java.util.Objects;
 
-public class DefaultCoordinates implements Coordinates {
+public class DefaultCoordinate implements Coordinate {
 
     private Float latitude;
     private Float longitude;
 
-    public DefaultCoordinates(Float latitude, Float longitude) {
+    public DefaultCoordinate(Float latitude, Float longitude) {
         this.latitude = Objects.requireNonNull(latitude,"Latitude cannot be null");
         this.longitude = Objects.requireNonNull(longitude,"Longitude cannot be null");
     }
