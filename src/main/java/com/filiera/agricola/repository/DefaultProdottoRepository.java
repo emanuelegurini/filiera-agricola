@@ -6,6 +6,8 @@ import com.filiera.agricola.model.interfaces.ProdottoRepository;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+// TODO: elimina prodotto dal db. In questo caso il prodotto dovrebbe essere eliminato o solamente reso non disponibile con un flag?
+
 /*
 * Questa classe implementa il DB in memory.
 * In futuro la struttura dati in memory verrà sostituita con la connessione al DB vera e propria.
