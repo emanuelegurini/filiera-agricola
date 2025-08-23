@@ -45,7 +45,7 @@ public class DefaultAziendaService implements AziendaService {
         }
 
         aziendaRepository.save(nuovaAzienda);
-        System.out.println("LOG: Nuova azienda registrata con ID: " + nuovaAzienda.getId() + ": " + nuovaAzienda.getRagioneSociale());
+        System.out.println("INFO: Nuova azienda registrata con ID: " + nuovaAzienda.getId() + ": " + nuovaAzienda.getRagioneSociale());
 
         return nuovaAzienda;
     }
