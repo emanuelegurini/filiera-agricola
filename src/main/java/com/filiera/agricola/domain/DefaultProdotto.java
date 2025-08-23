@@ -185,8 +185,6 @@ public class DefaultProdotto implements ArticoloVendibile, Validabile {
     }
 
     public List<DefaultProdotto> getIngredienti() {
-        // Restituisce una vista non modificabile della lista originale.
-        // È la soluzione più efficiente.
         return Collections.unmodifiableList(this.ingredienti);
     }
 
