@@ -11,12 +11,12 @@ import com.filiera.agricola.model.interfaces.UtenteRepository;
 
 import java.util.UUID;
 
-public class DefaultUserService implements UserService {
+public class DefaultUtenteService implements UserService {
 
     private final UtenteRepository utenteRepository;
     private final AziendaRepository aziendaRepository;
 
-    public DefaultUserService(UtenteRepository utenteRepository, AziendaRepository aziendaRepository) {
+    public DefaultUtenteService(UtenteRepository utenteRepository, AziendaRepository aziendaRepository) {
        this.utenteRepository = utenteRepository;
        this.aziendaRepository = aziendaRepository;
     }
@@ -46,7 +46,7 @@ public class DefaultUserService implements UserService {
         );
 
         utenteRepository.save(nuovoUtente);
-        System.out.println("LOG: Nuovo utente registrato con ID: " + nuovoUtente.getId() + ": " + nuovoUtente.getNome());
+        System.out.println("INFO: Nuovo utente registrato con ID: " + nuovoUtente.getId() + ": " + nuovoUtente.getNome());
 
         return nuovoUtente;
     }
@@ -64,7 +64,7 @@ public class DefaultUserService implements UserService {
         utente.addAffiliazione(affiliazione);
 
         utenteRepository.save(utente);
-        System.out.println("LOG: Aggiunta affiliazione per utente " + utenteId + " ad azienda " + aziendaId);
+        System.out.println("INFO: Aggiunta affiliazione per utente " + utenteId + " ad azienda " + aziendaId);
     }
 
     /*

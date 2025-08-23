@@ -14,7 +14,14 @@ public class DefaultUtenteRepository implements UtenteRepository {
 
     @Override
     public void save(DefaultUtente utente) {
-        System.out.println("INFO: Salvataggio dell'utente '" + utente.getEmail() + "' in memoria.");
+        boolean isUpdate = database.containsKey(utente.getId());
+
+        if (isUpdate) {
+            System.out.println("INFO: Aggiornamento dell'utente '" + utente.getEmail() + "' in memoria.");
+        } else {
+            System.out.println("INFO: Creazione del nuovo utente '" + utente.getEmail() + "' in memoria.");
+        }
+
         database.put(utente.getId(), utente);
     }
 
