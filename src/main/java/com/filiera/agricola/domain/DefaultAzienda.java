@@ -1,6 +1,7 @@
 package com.filiera.agricola.domain;
 
 import com.filiera.agricola.model.enums.TipoAzienda;
+import com.filiera.agricola.model.interfaces.PuntoMappabile;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -10,16 +11,16 @@ import java.util.UUID;
 
 import static com.filiera.agricola.utils.ValidationUtils.validateEmail;
 
-public class DefaultAzienda {
+public class DefaultAzienda extends PuntoMappabile {
     protected UUID id;
     protected String ragioneSociale;
     protected String partitaIva;
-    protected String indirizzo;
+    // protected String indirizzo;
     protected String email;
     protected String numeroTelefono;
     protected String sitoWeb;
     protected LocalDateTime registrationDate;
-    protected DefaultCoordinate coordinate;
+    // protected DefaultCoordinate coordinate;
 
     /**
      * Insieme dei ruoli che l'azienda ricopre nella filiera.
@@ -36,14 +37,16 @@ public class DefaultAzienda {
             String sitoWeb,
             DefaultCoordinate coordinate
     ) {
+        super(indirizzo, coordinate);
+
         this.id = UUID.randomUUID();
         this.ragioneSociale = Objects.requireNonNull(ragioneSociale,"Company name cannot be null");
         this.partitaIva = Objects.requireNonNull(partitaIva, "VAT number cannot be null");
-        this.indirizzo = Objects.requireNonNull(indirizzo, "Address cannot be null");
+        // this.indirizzo = Objects.requireNonNull(indirizzo, "Address cannot be null");
         this.email = validateEmail(email);
         this.numeroTelefono = Objects.requireNonNull(numeroTelefono,   "Phone number cannot be null");
         this.sitoWeb = Objects.requireNonNull(sitoWeb,   "Sito web cannot be null");
-        this.coordinate = Objects.requireNonNull(coordinate, "Coordinates cannot be null");
+        // this.coordinate = Objects.requireNonNull(coordinate, "Coordinates cannot be null");
         this.tipiAzienda = new HashSet<>();
 
     }
@@ -81,7 +84,7 @@ public class DefaultAzienda {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = validateEmail(email);
     }
 
     public String getNumeroTelefono() {
@@ -98,10 +101,6 @@ public class DefaultAzienda {
 
     public void setSitoWeb(String sitoWeb) {
         this.sitoWeb = sitoWeb;
-    }
-
-    public String getCoordinate() {
-        return "{lat: " + coordinate.getLat() + ", lng: " + coordinate.getLng() + "}";
     }
 
     public void setCoordinate(DefaultCoordinate coordinate) {
