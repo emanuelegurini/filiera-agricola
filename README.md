@@ -1,11 +1,8 @@
 # filiera-agricola
 
 ### TODO
-- Evento 
-- Crea Evento
-    - ogni utente puo iscriversi a un evento
-- creazione pacchetto prodotti
-- Carrelo
+- Use https://www.slf4j.org/ instead System.out.println()
+- Carrello
     - visualizza carrello
         - aggiungo prodotto singolo 
         - elimino prodotto singolo
@@ -14,4 +11,5 @@
     - Prodotto
     - Evento
     - Azienda
+- Add springboot
 
