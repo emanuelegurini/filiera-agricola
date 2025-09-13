@@ -32,8 +32,6 @@ public class DefaultAziendaServiceTest {
                 "Azienda 2", "P_IVA_UNICA", "Indirizzo 2", "email2@test.it", "222", "sito2.it", new CoordinateDTO(2f, 2f), Collections.emptySet()
         );
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            aziendaService.creaNuovaAzienda(datiAzienda2);
-        });
+        assertThrows(IllegalArgumentException.class, () -> aziendaService.creaNuovaAzienda(datiAzienda2));
     }
 }

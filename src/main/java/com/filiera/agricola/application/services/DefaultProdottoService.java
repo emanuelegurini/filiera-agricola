@@ -50,7 +50,7 @@ public class DefaultProdottoService implements ProdottoService {
         configuraProdottoPerTipo(nuovoProdotto, dati);
 
         prodottoRepository.save(nuovoProdotto);
-        System.out.println("INFO: Creato nuovo prodotto '" + nuovoProdotto.getNome() + "' per azienda " + azienda.getRagioneSociale());
+        System.out.println("INFO: Creato nuovo prodotto '" + nuovoProdotto.getNomeArticolo() + "' per azienda " + azienda.getRagioneSociale());
         return nuovoProdotto;
     }
 

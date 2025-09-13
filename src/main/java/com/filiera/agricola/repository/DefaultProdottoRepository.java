@@ -31,7 +31,7 @@ public class DefaultProdottoRepository implements ProdottoRepository {
 
     @Override
     public void save(DefaultProdotto defaultProdotto) {
-        System.out.println("INFO: Salvataggio del prodotto '" + defaultProdotto.getNome() + "' in memoria.");
+        System.out.println("INFO: Salvataggio del prodotto '" + defaultProdotto.getNomeArticolo() + "' in memoria.");
         database.put(defaultProdotto.getId(), defaultProdotto);
     }
 

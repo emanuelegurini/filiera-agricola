@@ -1,5 +1,7 @@
 package com.filiera.agricola.model.interfaces;
 
+import java.util.UUID;
+
 /**
  * Definisce il contratto per qualsiasi oggetto che possa essere venduto
  * sulla piattaforma.
@@ -11,16 +13,32 @@ package com.filiera.agricola.model.interfaces;
 public interface ArticoloVendibile {
 
     /**
+     */
+    UUID getId();
+
+    /**
      * Restituisce il nome dell'articolo da mostrare all'utente.
      * @return Il nome visualizzato.
      */
     String getNomeArticolo();
 
     /**
+     *  TODO: ADD COMMENT
+     */
+    void setNomeArticolo(String nomeArticolo);
+
+
+    /**
      * Restituisce la descrizione dell'articolo.
      * @return La descrizione dettagliata.
      */
     String getDescrizioneArticolo();
+
+    /**
+     * Restituisce la descrizione dell'articolo.
+     * @return La descrizione dettagliata.
+     */
+    void setDescrizioneArticolo(String descrizioneArticolo);
 
     /**
      * Restituisce il prezzo finale di vendita dell'articolo.
