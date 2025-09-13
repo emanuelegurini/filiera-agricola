@@ -78,4 +78,9 @@ public abstract class ArticoloCatalogo implements ArticoloVendibile, Validabile 
     public void setPrezzoUnitario(double prezzoUnitario) {
         this.prezzoUnitario = prezzoUnitario;
     }
+
+    @Override
+    public void sottomettiPerValidazione() {
+        System.out.println("Prodotto '" + nome + "' sottomesso per validazione.");
+    }
 }

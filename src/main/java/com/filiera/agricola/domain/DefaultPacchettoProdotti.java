@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
  */
 public class DefaultPacchettoProdotti extends ArticoloCatalogo {
 
-    private final List<ArticoloCatalogo> prodottiInclusi;
+    private Map<ArticoloCatalogo, Integer> prodottiInclusi;
 
     public DefaultPacchettoProdotti(
             String nome,
@@ -22,7 +22,7 @@ public class DefaultPacchettoProdotti extends ArticoloCatalogo {
     ) {
         // Il prezzo di un pacchetto è calcolato dinamicamente, quindi si inizializza a 0.
         super(nome, descrizione, 0, aziendaDistributrice);
-        this.prodottiInclusi = new ArrayList<>();
+        this.prodottiInclusi = new HashMap<>();
     }
 
     /**
@@ -33,8 +33,8 @@ public class DefaultPacchettoProdotti extends ArticoloCatalogo {
      */
     @Override
     public double getPrezzoVendita() {
-        double prezzoTotale = prodottiInclusi.stream()
-                .mapToDouble(ArticoloVendibile::getPrezzoVendita)
+        double prezzoTotale = prodottiInclusi.entrySet().stream()
+                .mapToDouble(entry -> entry.getKey().getPrezzoVendita() * entry.getValue())
                 .sum();
 
         this.setPrezzoUnitario(prezzoTotale);
@@ -51,8 +51,11 @@ public class DefaultPacchettoProdotti extends ArticoloCatalogo {
 
         String listaProdotti = this.prodottiInclusi.isEmpty()
                 ? "Nessun prodotto incluso"
-                : this.prodottiInclusi.stream()
-                .map(p -> String.format("%s (da %s)", p.getNomeArticolo(), p.getAziendaDiRiferimento().getRagioneSociale()))
+                : this.prodottiInclusi.entrySet().stream()
+                .map(entry -> String.format("%dx %s (da %s)",
+                        entry.getValue(),
+                        entry.getKey().getNomeArticolo(),
+                        entry.getKey().getAziendaDiRiferimento().getRagioneSociale()))
                 .collect(Collectors.joining("; "));
         dati.put("Prodotti Inclusi", listaProdotti);
 
@@ -61,29 +64,18 @@ public class DefaultPacchettoProdotti extends ArticoloCatalogo {
         return dati;
     }
 
-    /**
-     * Aggiunge un articolo al pacchetto.
-     * @param articolo L'articolo da includere nel pacchetto.
-     */
-    public void aggiungiProdotto(ArticoloCatalogo articolo) {
-        if (articolo != null) {
-            this.prodottiInclusi.add(articolo);
+    public void aggiungiProdotto(ArticoloCatalogo articolo, int quantita) {
+        if (articolo != null && quantita > 0) {
+            this.prodottiInclusi.merge(articolo, quantita, Integer::sum);
         }
     }
 
-    /**
-     * Rimuove un articolo dal pacchetto.
-     * @param articolo L'articolo da rimuovere.
-     */
     public void rimuoviProdotto(ArticoloCatalogo articolo) {
         this.prodottiInclusi.remove(articolo);
     }
 
-    /**
-     * Restituisce una lista non modificabile dei prodotti inclusi nel pacchetto.
-     * @return La lista dei prodotti.
-     */
-    public List<ArticoloCatalogo> getProdottiInclusi() {
-        return Collections.unmodifiableList(prodottiInclusi);
+
+    public Map<ArticoloCatalogo, Integer> getProdottiInclusi() {
+        return Collections.unmodifiableMap(prodottiInclusi);
     }
 }

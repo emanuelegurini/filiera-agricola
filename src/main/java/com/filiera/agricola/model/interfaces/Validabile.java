@@ -36,4 +36,6 @@ public interface Validabile {
      * @return lo StatoValidazione corrente.
      */
     StatoValidazione getStatoValidazione();
+
+    void sottomettiPerValidazione();
 }

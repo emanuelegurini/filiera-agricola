@@ -144,4 +144,9 @@ public class DefaultEvento extends PuntoMappabile implements Validabile {
             this.aziendePartecipanti.add(azienda);
         }
     }
+
+    @Override
+    public void sottomettiPerValidazione() {
+
+    }
 }
